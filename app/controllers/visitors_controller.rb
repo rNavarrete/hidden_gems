@@ -1,6 +1,5 @@
 class VisitorsController < ApplicationController
-
-  def new
+  def index
+  	@videos = Video.all
   end
-
 end
