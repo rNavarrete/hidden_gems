@@ -1,15 +1,17 @@
+<ul>
 <h3>Almost gems.</h3>
   <% @videos.each do |video| %>
-    <%= raw youtube_embed(video.video_link) %>
-    <% if current_user && current_user.votes.where(:voteable_id => video.id, :vote => true).present? %>
+    <li><%= raw youtube_embed(video.video_link) %>
+    <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %></li>
       *
     <% else %>  	
-      <%= link_to "+", vote_for_video_video_path(video), :method => "post", :remote => true %>
+      <%= link_to "+", votes_path(:vote =>{:video_id => video.id, :up => true}), :method => "post"%>
     <% end %>  
    
-    <% if current_user && current_user.votes.where(:voteable_id => video.id, :vote => false).present? %>
+    <% if current_user && current_user.votes.where(:video_id => video.id, :up => false).present? %>
       *
     <% else %>     
-      <%= link_to "-", vote_against_video_video_path(video), :method => "post", :remote => true %>
+      <%= link_to "-", votes_path(:vote => {:video_id => video.id, :up => false}), :method => "post" %>
     <% end %>
   <% end %>    
+</ul>

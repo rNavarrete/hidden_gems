@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920092527) do
+ActiveRecord::Schema.define(version: 20130921051720) do
 
   create_table "users", force: true do |t|
     t.string   "user_name"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20130920092527) do
     t.string   "video_link"
     t.string   "artist"
     t.string   "song"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "video_id"
+    t.boolean  "up"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
