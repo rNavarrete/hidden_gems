@@ -5,7 +5,7 @@
     <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %></li>
       *
     <% else %>  	
-      <%= link_to "+", votes_path(:vote =>{:video_id => video.id, :up => true}), :method => "post"%>
+      <%= link_to "+", votes_path(:vote =>{:video_id => video.id, :up => true}), :method => "post" %>
     <% end %>  
    
     <% if current_user && current_user.votes.where(:video_id => video.id, :up => false).present? %>

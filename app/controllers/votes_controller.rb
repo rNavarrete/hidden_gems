@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: [:show, :edit, :update, :destroy]
 
+
   # GET /votes
   # GET /votes.json
   def index
@@ -24,18 +25,14 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    @vote = current_user.votes.create(vote_params)
-    @vote.save
-  
-    respond_to do |format|
-      if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vote }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
-      end
-    end
+    @vote = Vote.where(:video_id => params[:vote][:video_id], :user_id => current_user.id).first
+    if @vote
+       @vote.up = params[:vote][:up]
+       @vote.save
+    else
+       @vote = current_user.votes.create(vote_params)
+    end   
+       redirect_to :back
   end
 
   # PATCH/PUT /votes/1
