@@ -1,17 +1,25 @@
-<ul>
-<h3>Almost gems.</h3>
-  <% @videos.each do |video| %>
-    <li><%= raw youtube_embed(video.video_link) %>
-    <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %></li>
-      *
-    <% else %>  	
-      <%= link_to "+", votes_path(:vote =>{:video_id => video.id, :up => true}), :method => "post" %>
-    <% end %>  
+<ul class="unstyled thumbnails">
+
+  <h3>Almost gems.</h3>
+    <% @videos.each do |video| %>
+    
+      <li class="span3 thumbnail"> <%= raw youtube_embed(video.video_link)%>
+    
+      <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %>
+        <%= link_to "Polish", nil, class: "btn btn-primary disabled", style: "color: #ffffff" %>
+      <% else %>  	
+        <%= link_to "Polish", votes_path(:vote =>{:video_id => video.id, :up => true}),class: "btn btn-primary", style: "color: #ffffff", :method => "post" %>
+      <% end %>  
    
-    <% if current_user && current_user.votes.where(:video_id => video.id, :up => false).present? %>
-      *
-    <% else %>     
-      <%= link_to "-", votes_path(:vote => {:video_id => video.id, :up => false}), :method => "post" %>
-    <% end %>
-  <% end %>    
+      <% if current_user && current_user.votes.where(:video_id => video.id, :up => false).present? %>
+        <%= link_to "Bury", nil, class: "btn btn-danger disabled", style: "color: #ffffff" %>
+      <% else %>     
+        <%= link_to "Bury", votes_path(:vote => {:video_id => video.id, :up => false}),class: "btn btn-danger", style: "color: #ffffff", :method => "post" %>
+      <% end %>
+    
+      <h5><%= "#{video.artist}: #{video.song}" %></h5>
+      <p><%= "#{video.description}" %></p>
+
+      Votes: <%= video.votes.where(:up => true).count - video.votes.where(:up => false).count %>
+    <% end %></li>    
 </ul>

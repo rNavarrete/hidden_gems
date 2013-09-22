@@ -40,6 +40,6 @@ class VideosController < ApplicationController
     # list between create and update. Also, you can specialize this method
     # with per-user checking of permissible attributes.
   def person_params
-    params.require(:video).permit(:video_link, :artist, :song)
+    params.require(:video).permit(:video_link, :artist, :song, :description)
   end
 end

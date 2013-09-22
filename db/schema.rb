@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921051720) do
+ActiveRecord::Schema.define(version: 20130922021254) do
 
   create_table "users", force: true do |t|
     t.string   "user_name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20130921051720) do
     t.string   "song"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description", limit: nil
   end
 
   create_table "votes", force: true do |t|
