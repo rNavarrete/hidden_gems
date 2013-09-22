@@ -1,6 +1,13 @@
 class VideosController < ApplicationController
   before_filter :authenticate_user!  	
 
+  def show
+    @video = Video.find(params[:id])
+  end  
+
+  def edit
+    @video = Video.find(params[:id])  
+  end  
   def index
     @video = Video.all  
   end  
@@ -14,8 +21,15 @@ class VideosController < ApplicationController
   	redirect_to root_path
   end
 
-  def edit
-  end	
+  def update
+    @video = Video.find(params[:id])
+ 
+    if @video.update(person_params)
+      redirect_to @video
+    else
+      render 'edit'
+  end
+end
 
   def destroy
     @video = Video.find(params[:id]).delete

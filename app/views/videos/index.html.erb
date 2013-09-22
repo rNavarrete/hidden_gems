@@ -1,14 +1,20 @@
-<h1>Listing Videos</h1>
+<h2>Listing Videos</h2>
 
-<table>
-<% @video.each do |video| %>
-  <tr class="">
-    <td>
-      <%= "#{video.artist}: #{video.song}" %>
-      <%= link_to 'Destroy', video, method: :delete,
-                  data: { confirm: 'Are you sure?' } %>    
-    </td>
+<table class="table table-hover table-bordered">
+  <thead>	
+  <tr>	
+    <th>Artist</th>
+    <th>Song Title</th>
+    <th>Options</th>
   </tr>
+  </thead>
+  <tr><% @video.each do |video| %>
+  	<tbody>
+    <td><%= "#{video.artist}" %></td>
+    <td><%= "#{video.song}" %></td>
+    <td><%= link_to "Delete", video_path(video), :method => "delete", class: "btn btn-danger", data: {confirm: "Are you sure?"} %> <%= link_to "Edit", edit_video_path(video), class: "btn btn-warning"%></td> 
+  </tr>
+  </tbody>
 <% end %>
 </table>
 
@@ -16,6 +22,5 @@
 
 
 
-
-
+   
 
