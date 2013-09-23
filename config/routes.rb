@@ -1,4 +1,5 @@
 HiddenGems::Application.routes.draw do
+  get "search/index"
   get "users/index"
   resources :votes
   resources :videos
