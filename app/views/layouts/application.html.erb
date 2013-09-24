@@ -18,10 +18,9 @@
       </nav>
     </header>
     <main role="main">
-      <div class="span12">
-        <div class="container">
+      <div class="row">      
+        <div class="span4 offset8">
           <div class="content">
-           <div class="row">
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
@@ -29,7 +28,6 @@
           <footer>
           </footer>
         </div>
-      </div>
     </main>
   </body>
 </html>
