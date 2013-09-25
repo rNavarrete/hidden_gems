@@ -6,5 +6,7 @@ HiddenGems::Application.routes.draw do
   devise_for :users
   resources :users
   root :to => 'visitors#index'
+  resources :users
+
 
 end  

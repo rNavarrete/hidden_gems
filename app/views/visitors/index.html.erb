@@ -3,7 +3,7 @@
   <h3>Most Recent</h3>
     <% @videos.each do |video| %>
     
-      <li class="span3 offset9 img-polaroid img-rounded"> <%= raw youtube_embed(video.video_link)%>
+      <li class="img-polaroid"> <%= raw youtube_embed(video.video_link)%>
         
         <h5><%= "#{video.artist}: #{video.song}" %></h5>
         <p><%= "#{video.description}" %></p>	
