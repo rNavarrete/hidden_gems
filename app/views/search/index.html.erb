@@ -1,3 +1,4 @@
+
 Here are all the videos that matched "<%= params[:q] %>"
 <ul>
   <% @videos.each do |video| %>
@@ -17,9 +18,9 @@ Here are all the videos that matched "<%= params[:q] %>"
           <%= link_to "-", votes_path(:vote => {:video_id => video.id, :up => false}), :method => :post %>
       <% end %>
 
-      <%= link_to video.title, video.url %>
-      <%= link_to "comments", link %>
+      <%= link_to video.artist, video.video_link %>
+      <%= link_to "comments", video %>
     </li>
   <% end %>
-  <%= will_paginate @links %>
+  <%= will_paginate @videos %>
 </ul>

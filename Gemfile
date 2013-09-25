@@ -16,6 +16,7 @@ gem 'multi_json', '1.7.8'
 gem 'thumbs_up'
 gem 'pg'
 gem 'textacular', '~> 3.0'
+gem 'will_paginate', '~> 3.0'
 
 group :development do
   gem 'better_errors'

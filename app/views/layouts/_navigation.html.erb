@@ -7,9 +7,8 @@
   <% else %>
     <li><%= link_to 'Sign in', new_user_session_path %></li>  
   <% end %>
-  <%= form_tag(search_index_path, :method => "get", :style => "margin: 10px 0 0 0") do %>
-           <%= text_field_tag(:q, nil, :placeholder => "search") %>
-           <%= submit_tag("Search") %>
-          <% end %>          <!-- /// -->
-  
 </ul>
+<%= form_tag(search_index_path, :method => "get",class: "pull-right", :style => "margin: 5px 0 0 0") do %>
+    <%= text_field_tag(:q, nil, :placeholder => "search") %>
+    <%= submit_tag("Search", :style => "margin: -9px 0 0 0") %>
+  <% end %>                    

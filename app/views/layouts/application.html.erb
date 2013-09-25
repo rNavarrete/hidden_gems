@@ -9,18 +9,17 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header class="navbar navbar-inverse navbar-fixed-top">
-      <nav class="navbar-inner">
-        <%= link_to "HiddenGe.ms", root_path, class: "brand" %>
-        <div class="container">
+    <div class="container-fluid">    
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar-inner">
+          <%= link_to "HiddenGe.ms", root_path, class: "brand" %>
           <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </header>
-    <main role="main">
-      <div class="row">      
-        <div class="span4 offset8">
-          <div class="content">
+        </nav>
+      </div>
+      <main role="main">
+        <div class="row">      
+          <div class="span4 offset8">
+            <div class="content">
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
@@ -28,6 +27,8 @@
           <footer>
           </footer>
         </div>
-    </main>
+      </main>
+    </div>
+    </div>    
   </body>
 </html>
