@@ -20,8 +20,8 @@
           <% else %>     
             <%= link_to "Bury", votes_path(:vote => {:video_id => video.id, :up => false}),class: "btn btn-danger", style: "color: #ffffff", :method => "post" %>
           <% end %>
-
-          <strong><%= video.votes.where(:up => true).count - video.votes.where(:up => false).count %></strong>
+          <strong> Votes: <%= video.votes.where(:up => true).count - video.votes.where(:up => false).count %></strong></br>
+         <%= link_to "Comments", video, class: "center" %>          
         </div>  
       </div>
     </li>    

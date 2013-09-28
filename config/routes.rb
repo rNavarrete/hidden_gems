@@ -7,6 +7,8 @@ HiddenGems::Application.routes.draw do
   resources :users
   root :to => 'visitors#index'
   resources :users
+  resources :comments
+
 
 
 end  

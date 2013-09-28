@@ -10,8 +10,6 @@
   </head>
   <body>
 
-    <div class="container-fluid">    
-      <div class="masthead">
         <div class="navbar navbar-inverse navbar-fixed-top">
           <nav class="navbar-inner">
             <%= link_to "HiddenGe.ms", root_path, class: "brand" %>
@@ -19,30 +17,16 @@
           </nav>
         </div>
       </div>  
-      <main role="main">
         <div class="row">      
-          <div class="span2">
-          <ul class="well sidebar-nav">
-            <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
-            <li><a href="#"><i class="icon-book"></i> Library</a></li>
-            <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
-            <li><a href="#"><i class="i"></i> Misc</a></li>
-          </ul>
-        </div>
-          <div class="span10">
-            <div class="content">
+          <div class="span13">
               <%= render 'layouts/messages' %>
               <%= yield %>
-            </div>
           </div>
           
           <footer>
           </footer>
-        </div>
       </main>
-      <div class="row">
       </div>
     </div>
-    </div>    
   </body>
 </html>
