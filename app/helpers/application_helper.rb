@@ -7,6 +7,8 @@ module ApplicationHelper
       youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
       youtube_id = $5
     end
-    %Q{<iframe title="YouTube video player" width="272" height="210" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
+    %Q{<iframe id="ytplayer" type="text/html" width="272" height="210"
+src="https://www.youtube.com/embed/#{youtube_id}?controls=0&showinfo=0&autohide=1&color=white&theme=light"
+frameborder="0" allowfullscreen></iframe>}
   end
 end  
