@@ -9,6 +9,7 @@ class VideosController < ApplicationController
   def edit
     @video = Video.find(params[:id])  
   end  
+
   def index
     @video = Video.all  
   end  
@@ -55,6 +56,6 @@ end
     # list between create and update. Also, you can specialize this method
     # with per-user checking of permissible attributes.
   def person_params
-    params.require(:video).permit(:video_link, :artist, :song, :description)
+    params.require(:video).permit(:user_id, :video_link, :artist, :song, :description)
   end
 end

@@ -6,7 +6,9 @@
       <div class="caption">  
 
         <h6 class="text-center"><%= "Artist: #{video.artist}"%></h6>
-        <h6 class="text-center"><%= "Song: #{video.song}"%></h6> 
+        <h6 class="text-center"><%= "Song: #{video.song}"%></h6>
+        <h6 class="text-center"><%= "Submited by: #{video.user_id}"%></h6> 
+
         
         <div class="text-center">
           <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %>
