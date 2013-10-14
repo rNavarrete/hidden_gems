@@ -1,32 +1,32 @@
-<ul class="thumbnails">
-  <% @videos.each do |video| %>
-    <li class="img-polaroid span3"> 
-      <%= raw youtube_embed(video.video_link)%>
+  <ul class="thumbnails">
+      <% @videos.each do |video| %>
+        <li class="span3">
+        <div class="thumbnail"> 
+          <%= raw youtube_embed(video.video_link)%>
+            <div class="caption">  
+              
+              <%= "Artist: #{video.artist}" %><br>
+              <%= "Song: #{video.song}"%><br>
+              <%= "Submited by: #{video.user_name}"%><br>
+              <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %>
+                <%= link_to "Polish", nil, class: "btn btn-primary disabled", style: "color: #ffffff" %>
+              <% else %>  	
+                <%= link_to "Polish", votes_path(:vote =>{:video_id => video.id, :up => true}),class: "btn btn-primary", style: "color: #ffffff", :method => "post" %>
+              <% end %>  
+               
+              <% if current_user && current_user.votes.where(:video_id => video.id, :up => false).present? %>
+                <%= link_to "Bury", nil, class: "btn btn-danger disabled", style: "color: #ffffff" %>
+              <% else %>     
+                <%= link_to "Bury", votes_path(:vote => {:video_id => video.id, :up => false}),class: "btn btn-danger", style: "color: #ffffff", :method => "post" %>
+              <% end %><br>
+              <strong> Votes: <%= video.votes.where(:up => true).count - video.votes.where(:up => false).count %></strong>
+               <%= link_to "Comments", video, class: "center" %>
+            </div>             
+          </div> 
+        </li>
+      <% end %> 
+  </ul>
+</div>
 
-      <div class="caption">  
-
-        <h6 class="text-center"><%= "Artist: #{video.artist}"%></h6>
-        <h6 class="text-center"><%= "Song: #{video.song}"%></h6>
-        <h6 class="text-center"><%= "Submited by: #{video.user_id}"%></h6> 
-
-        
-        <div class="text-center">
-          <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %>
-            <%= link_to "Polish", nil, class: "btn btn-primary disabled", style: "color: #ffffff" %>
-          <% else %>  	
-            <%= link_to "Polish", votes_path(:vote =>{:video_id => video.id, :up => true}),class: "btn btn-primary", style: "color: #ffffff", :method => "post" %>
-          <% end %>  
-         
-          <% if current_user && current_user.votes.where(:video_id => video.id, :up => false).present? %>
-            <%= link_to "Bury", nil, class: "btn btn-danger disabled", style: "color: #ffffff" %>
-          <% else %>     
-            <%= link_to "Bury", votes_path(:vote => {:video_id => video.id, :up => false}),class: "btn btn-danger", style: "color: #ffffff", :method => "post" %>
-          <% end %>
-          <strong> Votes: <%= video.votes.where(:up => true).count - video.votes.where(:up => false).count %></strong></br>
-         <%= link_to "Comments", video, class: "center" %>          
-        </div>  
-      </div>
-    </li>    
-  <% end %>
-</ul>
+  
 

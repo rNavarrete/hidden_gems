@@ -11,7 +11,8 @@ class VideosController < ApplicationController
   end  
 
   def index
-    @video = Video.all  
+    @video = Video.all
+    @user = Users.all
   end  
 
   def new
@@ -19,7 +20,7 @@ class VideosController < ApplicationController
   end
 	
   def create
-  	@video = Video.create(person_params)
+  	@video = Video.create(video_params)
   	redirect_to root_path
   end
 
@@ -55,7 +56,7 @@ end
     # just a good pattern since you'll be able to reuse the same permit
     # list between create and update. Also, you can specialize this method
     # with per-user checking of permissible attributes.
-  def person_params
-    params.require(:video).permit(:user_id, :video_link, :artist, :song, :description)
+  def video_params
+    params.require(:video).permit(:user_id, :video_link, :artist, :song, :description, :user_name)
   end
 end
