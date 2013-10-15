@@ -1,8 +1,11 @@
-<em><h2 class="legend">Comments<h2></em>
+<em><h1><legend>Comments</h1></legend></em></legend>
+<div class="pull-right">
+<%=  raw youtube_embed(@video.video_link) %>
+</div>
 
-<div class="well">
+<div>
   <% @video.comments.each do |comment| %>
-    <em><h4><%= comment.text %></h4></em> <h6 class="offset1"><%=" says: #{comment.user_name}" %></h6>
+    <em><%= comment.text %></em> <h6><font color="red" size="1"><%=" says: #{comment.user_name}" %></font></h6>
   <% end %>
 </div>
 
@@ -20,13 +23,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_area :text, :placeholder => "What do you think??", rows: 10, cols: 30 %>
+    <%= f.text_area :text, :placeholder => "What do you think??", cols: 15 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, :class => 'btn-primary btn-mini' %>    
     <%= f.hidden_field :video_id, :value => @video.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :user_name, :value => current_user.user_name %>    
     
   </div>
 <% end %>
+

@@ -8,7 +8,7 @@
           <%= "Song: #{video.song}"%><br>
           <%= "Found by: #{video.user_name}"%><br>
           <strong> Votes: <%= video.votes.where(:up => true).count - video.votes.where(:up => false).count %></strong><br>
-          <strong><%= link_to "Comments", video, class: "center" %></strong>
+          <strong><%= link_to "Comments", video, class: "center" %></strong> <%= video.comments.count %>
           <div class="pull-right">
             <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %>
               <%= link_to "Polish", nil, class: "btn btn-primary disabled", style: "color: #ffffff" %>
