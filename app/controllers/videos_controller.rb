@@ -12,7 +12,7 @@ class VideosController < ApplicationController
 
   def index
     @video = Video.all
-    @user = Users.all
+    @user = User.all
   end  
 
   def new

@@ -1,9 +1,8 @@
-<h2>Comments<h2>
+<em><h2 class="legend">Comments<h2></em>
 
-<div>
+<div class="well">
   <% @video.comments.each do |comment| %>
-    <p><%= comment.text %></p>
-    <p><%= comment.user_name %></p>
+    <em><h4><%= comment.text %></h4></em> <h6 class="offset1"><%=" says: #{comment.user_name}" %></h6>
   <% end %>
 </div>
 
@@ -21,8 +20,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :text %><br />
-    <%= f.text_area :text, :placeholder => "Add a comment" %>
+    <%= f.text_area :text, :placeholder => "What do you think??", rows: 10, cols: 30 %>
   </div>
   <div class="actions">
     <%= f.submit %>
