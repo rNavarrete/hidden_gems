@@ -4,7 +4,7 @@
  
   <% if current_user %>
     <li><%= link_to 'Sign out', destroy_user_session_path, :method => "delete" %></li>
-    <li><%= button_to 'Add a gem!', new_video_path, class: "btn btn-success btn-small", :style => "margin: 7px 0 0 0", :method => "get" %></li>
+    <li><%= button_to 'Add a gem!', new_video_path, class: "btn btn-info btn-small", :style => "margin: 7px 0 0 0", :method => "get" %></li>
   <% else %>
     <li><%= link_to 'Sign in', new_user_session_path %></li>  
   <% end %>
@@ -12,7 +12,7 @@
 
 <%= form_tag(search_index_path, :method => "get",class: "pull-right", :style => "margin: 5px 0 0 0") do %>
   <%= text_field_tag(:q, nil, :placeholder => "search") %>
-  <%= submit_tag("Search", :style => "margin: -9px 0 0 0", :class => "btn-primary btn-small") %>
+  <%= submit_tag("Search", :style => "margin: -9px 0 0 0", :class => "btn btn-small") %>
 <% end %>                    
 
 

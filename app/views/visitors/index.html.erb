@@ -1,32 +1,35 @@
-<ul class="thumbnails">
-  <% @videos.each do |video| %>
-    <li class="span3">
-      <div class="thumbnail img-polaroid"> 
-        <%= raw youtube_embed(video.video_link)%>
-        <div class="caption well-large">  
-          <%= "Artist: #{video.artist}" %><br>
-          <%= "Song: #{video.song}"%><br>
-          <%= "Found by: #{video.user_name}"%><br>
-          <strong> Votes: <%= video.votes.where(:up => true).count - video.votes.where(:up => false).count %></strong><br>
-          <strong><%= link_to "Comments", video, class: "center" %></strong> <%= video.comments.count %>
-          <div class="pull-right">
-            <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %>
-              <%= link_to "Polish", nil, class: "btn btn-primary disabled", style: "color: #ffffff" %>
-            <% else %>  	
-              <%= link_to "Polish", votes_path(:vote =>{:video_id => video.id, :up => true}),class: "btn btn-primary", style: "color: #ffffff", :method => "post" %>
-            <% end %>  
-                 
-            <% if current_user && current_user.votes.where(:video_id => video.id, :up => false).present? %>
-              <%= link_to "Bury", nil, class: "btn btn-danger disabled", style: "color: #ffffff", remote: true %>
-            <% else %>     
-              <%= link_to "Bury", votes_path(:vote => {:video_id => video.id, :up => false}),class: "btn btn-danger", style: "color: #ffffff", :method => "post" %>
-            <% end %>
-          </div>  
-        </div>    
-      </div>             
-    </li>
-  <% end %> 
-</ul>
-
-  
-
+<div class="container">  
+  <div class="row">  
+    <div class="span12">
+    <ul class="thumbnails">
+        <% @videos.each do |video| %>
+          <li class="span3">
+            <div class="thumbnail img-polaroid"> 
+              <%= raw youtube_embed(video.video_link)%>
+              <div class="caption well-large">  
+                <%= "Artist: #{video.artist}" %><br>
+                <%= "Song: #{video.song}"%><br>
+                <%= "Found by: #{video.user_name}"%><br>
+                <strong> Votes: <%= video.votes.where(:up => true).count - video.votes.where(:up => false).count %></strong><br>
+                <strong><%= link_to "Comments", video, class: "center" %></strong> <%= video.comments.count %>
+                <div class="pull-right">
+                  <% if current_user && current_user.votes.where(:video_id => video.id, :up => true).present? %>
+                    <%= link_to "Polish", nil, class: "btn btn-info disabled", style: "color: #ffffff" %>
+                  <% else %>  	
+                    <%= link_to "Polish", votes_path(:vote =>{:video_id => video.id, :up => true}),class: "btn btn-info", style: "color: #ffffff", :method => "post" %>
+                  <% end %>  
+                       
+                  <% if current_user && current_user.votes.where(:video_id => video.id, :up => false).present? %>
+                    <%= link_to "Bury", nil, class: "btn btn-danger disabled", style: "color: #ffffff", remote: true %>
+                  <% else %>     
+                    <%= link_to "Bury", votes_path(:vote => {:video_id => video.id, :up => false}),class: "btn btn-danger", style: "color: #ffffff", :method => "post" %>
+                  <% end %>
+                </div>  
+              </div>    
+            </div>             
+          </li>
+        <% end %>
+      </div>   
+    </ul>
+  </div>
+</div>

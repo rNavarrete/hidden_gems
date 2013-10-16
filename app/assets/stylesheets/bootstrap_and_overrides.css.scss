@@ -2,6 +2,21 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
+h1 {
+  color: white;	
+}
+
+.hero-unit {
+  background-image: url(vinyl.jpg);
+  background-position: 50% 50%;
+}
+
+
+body {
+  background:url('eb7.jpg');
+}
+
+
 .navbar-inner {
-    height: 40px;  
+    height: 43px;  
 }

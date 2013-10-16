@@ -4,9 +4,12 @@
 </div>
 
 <div>
+  <blockquote>
   <% @video.comments.each do |comment| %>
-    <em><%= comment.text %></em> <h6><font color="red" size="1"><%=" says: #{comment.user_name}" %></font></h6>
+    <p><%= comment.text %></p>
+    <small class="text-info"><%= comment.user_name %></small>
   <% end %>
+  </blockquote>
 </div>
 
 <%= form_for(@comment) do |f| %>
