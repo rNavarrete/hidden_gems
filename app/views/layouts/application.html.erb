@@ -10,32 +10,21 @@
   </head>
 
  
-  <body>
+  <body id="index">
 
     <!-- NAVBAR=================== -->
+
+
     <div class="navbar-wrapper">
       <div class ="container">
-        <header class="navbar navbar-fixed-top">
+        <header class="navbar navbar-inverse">
           <nav class="navbar-inner">
-            <%= link_to "HiddenGe.ms", root_path, class: "brand" %>
+            <%= link_to "Hidden Gems", root_path, class: "brand" %>
             <%= render 'layouts/navigation' %>
           </nav>
         </header>  
       </div>  
     </div> 
-  
-    <!-- Hero Unit=================== -->
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <div class="hero-unit">
-            <strong><h1 style="color:white">Hidden Gems</h1></strong>
-            <p>Tagline</p>
-            <p><a class="btn btn-primary btn-large">Learn more</a></p>
-          </div>
-        </div> 
-      </div>
-    </div>
 
     <%= render 'layouts/messages' %>
     <%= yield %>
